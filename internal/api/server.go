@@ -5,10 +5,10 @@ import (
 )
 
 type Server struct {
-	store *db.Store
+	store db.Store
 }
 
-func NewServer(store *db.Store) *Server {
+func NewServer(store db.Store) *Server {
 	return &Server{
 		store: store,
 	}

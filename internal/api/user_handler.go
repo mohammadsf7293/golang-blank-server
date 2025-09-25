@@ -8,12 +8,6 @@ import (
 	"github.com/mohammadsf7293/blank-go-project/internal/db"
 )
 
-func (s *Server) HandleHealth(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"status": "healthy"})
-}
-
 func (s *Server) HandleUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -60,7 +54,7 @@ func (s *Server) handleCreateUser(w http.ResponseWriter, r *http.Request) {
 
 	result, err := s.store.CreateUser(r.Context(), db.CreateUserParams{
 		Username:     input.Username,
-		Email:       input.Email,
+		Email:        input.Email,
 		PasswordHash: input.Password, // Note: In production, hash the password
 	})
 	if err != nil {
