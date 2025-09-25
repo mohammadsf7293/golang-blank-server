@@ -1,7 +1,11 @@
-.PHONY: all build test clean sqlc run docker-up docker-down
+.PHONY: all build test clean sqlc run docker-up docker-down mocks
 
 # Default target
 all: build
+
+# Generate mocks
+mocks:
+	go generate ./...
 
 # Build the application
 build:
